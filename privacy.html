@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FlowMat — Informativa e note legali</title>
+<title>FlowMat — Informativa e note legali / Privacy and legal notes</title>
 <style>
   :root { color-scheme: dark; }
   body {
@@ -14,9 +14,11 @@
   main { max-width: 640px; margin: 0 auto; }
   h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: .01em; }
   .sub { color: #8b97a3; font-size: 13px; margin: 0 0 28px; }
+  .lingue { font-size: 14px; margin: -16px 0 24px; }
   h2 { font-size: 17px; margin: 28px 0 6px; color: #7fe6cb; }
   p { margin: 0 0 12px; }
   .box { background: #232a33; border: 1px solid #38424e; border-radius: 12px; padding: 16px 18px; margin: 20px 0; }
+  .lingua { border-top: 1px solid #38424e; margin-top: 48px; padding-top: 28px; }
   a { color: #5fa8d3; }
   footer { color: #8b97a3; font-size: 13px; margin-top: 36px; border-top: 1px solid #38424e; padding-top: 16px; }
 </style>
@@ -24,13 +26,16 @@
 <body>
 <main>
   <h1>FlowMat</h1>
-  <p class="sub">Informativa e note legali · aggiornata al 14 settembre 2026</p>
+  <p class="sub">Informativa e note legali · aggiornata al 6 ottobre 2026</p>
+  <p class="lingue"><a href="#en">English version below</a></p>
 
   <div class="box">
     <p><b>In breve:</b> profilo, statistiche e segnalazioni restano sul telefono. L'app
     manda qualcosa fuori solo se lo scegli tu: dati anonimi di utilizzo e degli errori, se
-    accendi «Aiuta a migliorare FlowMat», e i riassunti che condividi con il tasto
-    «Condividi».</p>
+    accendi «Aiuta a migliorare FlowMat», i riassunti che condividi con il tasto
+    «Condividi», e — quando giochi dal vivo con qualcuno — quello che serve alla partita,
+    direttamente al suo telefono. In quel caso l'altro giocatore può vedere il tuo
+    indirizzo IP.</p>
   </div>
 
   <h2>Salute</h2>
@@ -43,11 +48,49 @@
   a nessun server.</p>
   <p>In pratica: l'app salva le sue informazioni nell'archivio locale dell'applicazione,
   sul telefono. Non ci sono account e non ci sono pubblicità. Disinstallando l'app i dati
-  vengono cancellati con essa.</p>
+  sul telefono vengono cancellati con essa. Se sul telefono è acceso il backup di Android,
+  una copia dei dati dell'app può stare anche nel backup del tuo account Google, che
+  gestisce Google e non noi: la togli dalle impostazioni di backup del telefono o
+  dell'account Google.</p>
   <p>L'app non legge rubrica, posizione, fotocamera né archiviazione. L'unico permesso
   che chiede è quello delle <strong>notifiche</strong>, e solo quando accendi il promemoria
   della sfida del giorno: sono notifiche locali, programmate sul telefono, che non passano
-  da nessun server. Il gioco funziona senza connessione a internet.</p>
+  da nessun server. Il gioco funziona senza connessione a internet; la connessione serve
+  solo per giocare dal vivo con un'altra persona.</p>
+
+  <h2>Giocare dal vivo</h2>
+  <p>Con «Gioca con qualcuno» fai una partita con un'altra persona, a cui mandi un link.
+  Ecco che cosa succede ai dati, dall'inizio alla fine.</p>
+  <p><strong>Vi collegate direttamente.</strong> I due telefoni — o il tuo telefono e il
+  browser di chi entra dal link — si parlano direttamente, con WebRTC: la stessa tecnologia
+  delle videochiamate nel browser. Come in ogni collegamento diretto, <strong>l'altro
+  giocatore può vedere il tuo indirizzo IP</strong>, e tu il suo. Da un indirizzo IP si può
+  risalire, in modo approssimativo, al fornitore di rete e alla zona. Gioca dal vivo con
+  persone che conosci.</p>
+  <p><strong>Che cosa vede l'altro.</strong> Il nick che hai scelto, l'aspetto e le
+  caratteristiche del tuo personaggio (per chi invita anche la cintura), la lingua e la
+  versione dell'app, e le mosse della partita. Nient'altro del tuo profilo. Il traffico fra
+  i due è cifrato.</p>
+  <p><strong>Come vi trovate.</strong> Per trovarsi, i due telefoni passano da server di
+  presentazione pubblici — relay Nostr e tracker BitTorrent per il web — attraverso la
+  libreria open source Trystero. Non sono server nostri: sono reti pubbliche, gestite da
+  altri. Vedono il tuo indirizzo IP e un codice che identifica la sala, ma non il
+  contenuto: i messaggi di presentazione sono cifrati, e la partita non passa da loro.
+  Per sapere il proprio indirizzo pubblico, il telefono lo chiede anche ai server STUN
+  pubblici di Google e di Cloudflare, che vedono il tuo indirizzo IP e nient'altro.</p>
+  <p><strong>Se il collegamento diretto non riesce</strong> (succede su alcune reti mobili),
+  il traffico passa dal servizio TURN di Cloudflare, che lo inoltra senza poterlo leggere:
+  resta cifrato fra i due telefoni. Cloudflare vede gli indirizzi IP dei due giocatori e
+  quanto traffico passa. Le credenziali per usarlo, che durano poche ore, l'app le chiede
+  a una nostra funzione su Cloudflare.</p>
+  <p><strong>La web app.</strong> Chi entra dal link senza avere l'app gioca in una pagina
+  web ospitata su Cloudflare Pages (flowmat-bjj.pages.dev). Come qualunque sito, Cloudflare
+  riceve l'indirizzo IP e i dati tecnici del browser per servire la pagina.</p>
+  <p><strong>Niente account.</strong> Per giocare dal vivo non serve registrarsi e non
+  servono dati personali: l'unica cosa tua che parte è il nick che hai scelto, che può
+  essere uno qualsiasi. Le partite dal vivo non passano da un nostro server: non
+  conserviamo né le partite né chi ha giocato con chi.</p>
+
   <h2>Dati anonimi (facoltativi)</h2>
   <p>Nelle opzioni c'è «Aiuta a migliorare FlowMat»: è <strong>spento</strong> finché non lo
   accendi, e l'app te lo chiede una sola volta, alla fine del tutorial. Se lo accendi, l'app
@@ -73,7 +116,9 @@
   appena installata.</p>
   <p>Le segnalazioni di errore che invii dal tasto «!» restano anche loro sul telefono:
   contengono la versione dell'app, il modello di dispositivo e le ultime mosse giocate, e
-  partono solo se sei tu a esportarle e mandarle. Lo stesso vale per la
+  partono solo se sei tu a mandarle: il tasto «Manda» apre la tua app di posta (o il menu
+  di condivisione del telefono) con l'indirizzo dei contatti qui sotto, e vedi che cosa
+  parte prima di inviarlo. Le usiamo solo per correggere il gioco. Lo stesso vale per la
   <strong>diagnostica</strong> delle opzioni (gli ultimi errori e le ultime schermate
   aperte): la condividi tu, con chi vuoi.</p>
 
@@ -84,14 +129,127 @@
   <p>I nomi delle tecniche sono di uso comune nel grappling; nessuna affiliazione con
   federazioni o scuole.</p>
 
-  <h2>Contatti</h2>
-  <p>Per domande su questa informativa, o per segnalare un errore tecnico nei contenuti:
-  <a href="mailto:privacy@flowmatapp.com">privacy@flowmatapp.com</a>.</p>
+  <h2>Titolare e contatti</h2>
+  <p>Il titolare del trattamento è Pietro Manganelli Conforti, che sviluppa e pubblica
+  FlowMat. Per domande su questa informativa, per chiedere la cancellazione dei dati o per
+  segnalare un errore tecnico nei contenuti:
+  <a href="mailto:flowmatbjj@gmail.com">flowmatbjj@gmail.com</a>.</p>
+
+  <section class="lingua" id="en" lang="en">
+    <h1>FlowMat</h1>
+    <p class="sub">Privacy and legal notes · updated 6 October 2026</p>
+
+    <div class="box">
+      <p><b>In short:</b> your profile, statistics and reports stay on your phone. The app
+      only sends something out if you choose to: anonymous usage and error data, if you turn
+      on “Help improve FlowMat”, the summaries you share with the “Share” button, and — when
+      you play live with someone — what the match needs, straight to their phone. In that
+      case the other player can see your IP address.</p>
+    </div>
+
+    <h2>Health</h2>
+    <p>This app is a study game, not a course: the techniques it describes (chokes, joint
+    locks, leg locks) can cause serious injury. Train them only with a qualified instructor
+    and a consenting partner, and tap early.</p>
+
+    <h2>Data</h2>
+    <p>Your profile, statistics and reports stay on your device; they are not sent to any
+    server.</p>
+    <p>In practice: the app keeps its information in the app's local storage, on the phone.
+    There are no accounts and no ads. Uninstalling the app deletes the data on the phone with
+    it. If Android backup is on, a copy of the app's data may also be in your Google account's
+    backup, which Google manages, not us: you can remove it from the backup settings of the
+    phone or of your Google account.</p>
+    <p>The app does not read your contacts, location, camera or files. The only permission
+    it asks for is <strong>notifications</strong>, and only when you turn on the daily
+    challenge reminder: they are local notifications, scheduled on the phone, that go
+    through no server. The game works without an internet connection; you only need one to
+    play live with another person.</p>
+
+    <h2>Playing live</h2>
+    <p>With “Play with someone” you play a match against another person, to whom you send a
+    link. Here is what happens to the data, from start to finish.</p>
+    <p><strong>You connect directly.</strong> The two phones — or your phone and the browser
+    of whoever joins from the link — talk to each other directly, over WebRTC: the same
+    technology as video calls in the browser. As with any direct connection, <strong>the
+    other player can see your IP address</strong>, and you can see theirs. An IP address can
+    roughly reveal the network provider and the area. Play live with people you know.</p>
+    <p><strong>What the other player sees.</strong> The nickname you chose, your character's
+    look and attributes (and the belt, for whoever sends the invite), the app's language and
+    version, and the moves of the match. Nothing else from your profile. The traffic between
+    the two of you is encrypted.</p>
+    <p><strong>How you find each other.</strong> To find each other, the two phones go through
+    public signalling servers — Nostr relays and BitTorrent trackers for the web — using the
+    open source library Trystero. They are not our servers: they are public networks run by
+    others. They see your IP address and a code that identifies the room, but not the
+    content: the signalling messages are encrypted, and the match does not go through them.
+    To learn its own public address, the phone also asks the public STUN servers of Google
+    and Cloudflare, which see your IP address and nothing else.</p>
+    <p><strong>If the direct connection fails</strong> (it happens on some mobile networks),
+    the traffic goes through Cloudflare's TURN service, which relays it without being able to
+    read it: it stays encrypted between the two phones. Cloudflare sees both players' IP
+    addresses and how much traffic goes through. The app gets the short-lived credentials to
+    use it from a function of ours on Cloudflare.</p>
+    <p><strong>The web app.</strong> Whoever joins from the link without the app plays in a
+    web page hosted on Cloudflare Pages (flowmat-bjj.pages.dev). Like any website, Cloudflare
+    receives the IP address and the browser's technical data to serve the page.</p>
+    <p><strong>No accounts.</strong> Playing live needs no sign-up and no personal data: the
+    only thing of yours that leaves the phone is the nickname you chose, which can be
+    anything. Live matches do not go through a server of ours: we keep neither the matches
+    nor who played with whom.</p>
+
+    <h2>Anonymous data (optional)</h2>
+    <p>In the options there is “Help improve FlowMat”: it is <strong>off</strong> until you
+    turn it on, and the app asks you only once, at the end of the tutorial. If you turn it
+    on, the app sends:</p>
+    <p>— <strong>usage data</strong>: which screens you open, the tutorial steps, how a match
+    or a daily challenge ended (the result and the number of moves), whether you shared a
+    summary;<br>
+    — <strong>app errors</strong>: the technical error message and the place in the code
+    where it happened;<br>
+    — with both: the app version, the phone's system and model (as any website reads them),
+    the screen size and the language.</p>
+    <p>Nothing identifies you: no name or nickname, no contacts, no location, no text you
+    wrote. The data is tied to a random number created when you turn the option on, which is
+    not linked to any account; turning the option off deletes that number from the phone and
+    nothing more is sent. Usage data goes to PostHog and errors to Sentry, which store them
+    on our behalf, and they are only used to understand where the game gets stuck and to fix
+    it: they are not sold or used for advertising. To ask for their deletion, write to the
+    address at the bottom of the page.</p>
+    <p>From the options you can <strong>export</strong> your profile to a file — the only way
+    that data leaves the phone, and you decide where it goes — and <strong>import</strong>
+    it again, here or on another phone. From the same screen you can delete everything:
+    “Start over from scratch” empties the app's storage and restarts it as freshly installed.</p>
+    <p>The error reports you send with the “!” button also stay on the phone: they contain
+    the app version, the device model and the last moves played, and they only leave if you
+    send them: the “Send” button opens your mail app (or the phone's share menu) with the
+    contact address below, and you see what goes out before sending it. We only use them to
+    fix the game. The same goes for the <strong>diagnostics</strong> in the options
+    (the last errors and the last screens opened): you share them, with whoever you want.</p>
+
+    <h2>Age</h2>
+    <p>The app is meant for practitioners aged 16 and over, or under adult supervision.</p>
+
+    <h2>Trademarks</h2>
+    <p>Technique names are in common use in grappling; no affiliation with federations or
+    schools.</p>
+
+    <h2>Data controller and contact</h2>
+    <p>The data controller is Pietro Manganelli Conforti, who develops and publishes
+    FlowMat. For questions about this notice, to ask for your data to be deleted, or to
+    report a technical error in the content:
+    <a href="mailto:flowmatbjj@gmail.com">flowmatbjj@gmail.com</a>.</p>
+  </section>
 
   <footer>
     Questa pagina è pubblicata all'indirizzo
-    <a href="https://flowmatapp.com/privacy">https://flowmatapp.com/privacy</a>.
-    È la stessa che l'app mostra da «Info e legale», anche senza connessione.
+    <a href="https://pietromanganelliconforti.github.io/flowmat-privacy/privacy.html">https://pietromanganelliconforti.github.io/flowmat-privacy/privacy.html</a>.
+    Dalla versione 0.9.33 la stessa pagina è anche dentro l'app, in «Info e legale», e si
+    legge senza connessione.<br>
+    This page is published at
+    <a href="https://pietromanganelliconforti.github.io/flowmat-privacy/privacy.html">https://pietromanganelliconforti.github.io/flowmat-privacy/privacy.html</a>.
+    From version 0.9.33 the same page is also inside the app, under “Info and legal”, and
+    can be read offline.
   </footer>
 </main>
 </body>
